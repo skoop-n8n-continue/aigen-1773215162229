@@ -13,6 +13,26 @@
 <body>
     <div class="container">
         <h1 id="greeting">Hello World</h1>
+        <pre id="pdf-content">
+## Architecture
+```
+n8n workflow
+ └─ HTTP Request POST /run ─────────────────────────► initiator Lambda (30s)
+ │ │ creates DynamoDB job
+ │ ◄── 202 { jobId, statusUrl } ───────────────────── │ invokes worker async
+ │ │
+ │ n8n Wait node (waits up to 20 min for callback) ▼
+ │ worker Lambda (900s)
+ │ │ clones GitHub repo
+ │ │ runs agent (cn or claude)
+ │ │ git add / commit / push
+ │ │ uploads files to S3
+ │ │ marks job "completed"
+ └─ ◄── POST callback_url { response, ... } ── │
+ ▼
+ DynamoDB ◄─── GET /status/{jobId}
+```
+        </pre>
     </div>
     <script src="script.js?v=abc123"></script>
   <script>

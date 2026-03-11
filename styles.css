@@ -21,11 +21,27 @@ body {
 }
 
 #greeting {
-    font-size: 8rem;
+    font-size: 6rem;
     color: #00b7af;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     animation: fadeIn 2s ease-in-out;
+    margin-bottom: 2rem;
+}
+
+#pdf-content {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    color: #6a7071;
+    text-align: left;
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid #00b7af;
+    animation: fadeIn 2s ease-in-out 0.5s both;
+    white-space: pre-wrap;
+    max-width: 90vw;
 }
 
 @keyframes fadeIn {
